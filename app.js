@@ -1,17 +1,32 @@
-var Bucky = {
-  printFirstName: function(){
-    console.log("My name is Bucky");
-    console.log(this === Bucky);
-    console.log(this === global);
+function User(){
+  this.name = "";
+  this.life = 100;
+  this.giveLife = function giveLife(targetPlayer){
+    targetPlayer.life += 1;
+    console.log(this.name +" gave 1 life to "+ targetPlayer.name);
   }
-
-};
-Bucky.printFirstName();
-
-//The default calling context is global for this
-function doSomethingWorthless(){
-  console.log("\ndoSomethingWorthless Function");
-  console.log(this === Bucky);
-  console.log(this === global);
 }
-doSomethingWorthless();
+
+var Bucky = new User();
+var Wendy = new User();
+Bucky.name = "Bucky";
+Wendy.name = "Wendy";
+
+Bucky.giveLife(Wendy);
+console.log("Bucky: " + Bucky.life);
+console.log("Wendy: " + Wendy.life);
+
+//You can add functions to all objects
+User.prototype.uppercut = function uppercut(targetPlayer){
+  targetPlayer.life -= 3;
+  console.log(this.name +" just uppercutted "+ targetPlayer.name);
+};
+
+Wendy.uppercut(Bucky);
+console.log("Bucky: " + Bucky.life);
+console.log("Wendy: " + Wendy.life);
+
+//You can add properties to all objects
+User.prototype.magic = 60;
+console.log(Bucky.magic);
+console.log(Wendy.magic);
