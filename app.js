@@ -1,23 +1,12 @@
-function placeAnOrder(orderNumber){
+var Bucky = {
+  favFood: "bacon",
+  favMovie: "Chappie"
+};
 
-  console.log("Customer order: ", orderNumber);
+var Person = Bucky; //Person is not a new copy but a new reference to the same Bucky object
 
-  cookAndDeliverFood(function(){
-    console.log("Delivered food order: ", orderNumber);
+Person.favFood = "salad";
+console.log(Bucky.favFood);
 
-  })
-
-}
-
-//Simulate a 5 second operation
-function cookAndDeliverFood(callback){
-  setTimeout(callback, 5000);
-}
-
-//Simulate users web request
-placeAnOrder(1);
-placeAnOrder(2);
-placeAnOrder(3);
-placeAnOrder(4);
-placeAnOrder(5);
-placeAnOrder(6);
+console.log(19 == '19'); //true
+console.log(19 === '19'); //false
