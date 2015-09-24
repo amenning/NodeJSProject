@@ -1,5 +1,5 @@
 //import code from movies_modules_9.js
-var movies = require('./movies_More_On_Modules_9');
+var movies = require('./movies_Shared_State_of_Modules_10');
 
 movies.printAvatar();
 console.log(movies.favMovie);
