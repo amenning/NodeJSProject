@@ -1,12 +1,17 @@
 var Bucky = {
-  favFood: "bacon",
-  favMovie: "Chappie"
+  printFirstName: function(){
+    console.log("My name is Bucky");
+    console.log(this === Bucky);
+    console.log(this === global);
+  }
+
 };
+Bucky.printFirstName();
 
-var Person = Bucky; //Person is not a new copy but a new reference to the same Bucky object
-
-Person.favFood = "salad";
-console.log(Bucky.favFood);
-
-console.log(19 == '19'); //true
-console.log(19 === '19'); //false
+//The default calling context is global for this
+function doSomethingWorthless(){
+  console.log("\ndoSomethingWorthless Function");
+  console.log(this === Bucky);
+  console.log(this === global);
+}
+doSomethingWorthless();
